@@ -1,0 +1,30 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: upf1
+  namespace: free5gc
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: upf1
+    spec:
+      domain:
+        cpu:
+          cores: 2
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: harddrive
+        machine:
+          type: q35
+        resources:
+          requests:
+            memory: 1G
+      volumes:
+      - name: harddrive
+        hostDisk:
+          path: /home/master/upf/upf1.raw
+          type: Disk

@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: free5gc-webui-service
+spec:
+  selector:
+    app: free5gc-webui
+  type: NodePort
+  ports:
+  - protocol: TCP
+    targetPort: 5000
+    port: 5000
+    nodePort: 31000 
